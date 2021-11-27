@@ -12,7 +12,7 @@ body {
 }
 .container {
   padding: 0;
-  width: 80%;
+  width: 85%;
   margin: auto;
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -26,7 +26,7 @@ header h1 {
 }
 
 .newsPosts {
-  width: 90%;
+  width: 98%;
   display: flex;
   margin: auto;
   justify-content: space-evenly;
@@ -37,6 +37,7 @@ header h1 {
 .newsCard {
   margin: 1rem 1.5rem;
   padding: 1rem;
+  width: 28%;
   text-align: center;
   background-color: white;
   border-radius: 0.5rem;
@@ -48,13 +49,13 @@ header h1 {
 
 .newsCard img {
   border-radius: 0.5rem;
-  width: 280px;
-  /* margin-bottom: 1rem; */
+  width: 100%;
 }
 
 .newsCard h2 {
   margin: 0.5rem 0;
   color: #1b4948;
+  text-transform: capitalize;
 }
 .newsCard button {
   margin: 0.5rem 0;
@@ -63,6 +64,7 @@ header h1 {
   border: none;
   border-radius: 5px;
   background-color: #1b4948;
+  cursor: pointer;
 }
 
 .newsCard h3 {
