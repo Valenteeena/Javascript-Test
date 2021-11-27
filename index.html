@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="./style/style.css"/>
-    <script src="./scripts/script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript News Post test</title>
 </head>
@@ -20,8 +19,25 @@
                 <h3>Authors Name | Comments (0)</h3>
                 <button>Read more</button>
             </div> -->
-            
         </section>
+        <div class="pagination">
+            <!-- <a href="#"></a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#"></a> -->
+
+            <button id="first" onclick="firstPage()">&laquo;</button> 
+            <button id="previous" onclick="previousPage()">Previous</button> 
+            <p class="active" href="#" id="currentPage">1</p>
+            <button id="next" onclick="nextPage()">Next</button> 
+            <button id="last" onclick="lastPage()">&raquo;</button> 
+          </div>
     </main>
+    <script src="./scripts/script.js"></script>
+
 </body>
+
 </html>

@@ -73,3 +73,35 @@ header h1 {
   font-weight: normal;
   color: #b3b3b3;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+/* Pagination links */
+.pagination button,
+.pagination p {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  background-color: unset;
+  border: none;
+  margin-right: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Style the active/current link */
+.pagination p.active {
+  background-color: #1b4948;
+  color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination button:hover:not(.active) {
+  background-color: #ddd;
+  cursor: pointer;
+}
+.pagination button:disabled {
+  background-color: #ddd;
+  color: #b3b3b3;
+}
