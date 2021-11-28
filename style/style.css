@@ -10,19 +10,26 @@
 body {
   background: #f4faf9;
 }
-.container {
+.container,
+.nContainer {
   padding: 0;
   width: 85%;
   margin: auto;
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
-
+.nContainer {
+  padding-top: 1rem;
+}
+.nContainer header img {
+  margin-bottom: 0.5rem;
+}
 header h1 {
   color: #1b4948;
   font-size: 3rem;
   text-align: center;
   margin-bottom: 2rem;
+  text-transform: capitalize;
 }
 
 .newsPosts {
@@ -104,4 +111,45 @@ header h1 {
 .pagination button:disabled {
   background-color: #ddd;
   color: #b3b3b3;
+}
+.newstext {
+  text-align: center;
+  color: #8ea7a4;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+.comment {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  /* margin-top: 1rem; */
+  justify-content: space-between;
+}
+.comment h3 {
+  font-size: 1.5rem;
+  color: #1b4948;
+  padding: 1rem 0;
+}
+.comment-list {
+}
+.comment-list aside {
+  display: flex;
+  border-bottom: 1px solid #8ea7a4;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.comment-list aside img {
+  margin: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.comment-list aside article {
+  margin: 0 0.5rem 0.5rem 0.5rem;
+}
+.comment-list aside h4 {
+  color: #1b4948;
+}
+.comment-list aside p {
+  color: #8ea7a4;
+  font-size: 0.9rem;
+  font-style: italic;
 }
