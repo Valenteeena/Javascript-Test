@@ -58,6 +58,20 @@ const displaynewsComment = (comments) => {
     var article = document.createElement("article");
     var commentTitle = document.createElement("h4");
     var commentText = document.createElement("p");
+    var deleteCom = document.createElement("button");
+    var editcom = document.createElement("button");
+
+    deleteCom.onclick = function () {
+      deleteComment(cm.id);
+    };
+    deleteCom.innerHTML = "X";
+    deleteCom.classList.add("delete");
+
+    editcom.onclick = function () {
+      //   deleteComment(cm.id);
+    };
+    editcom.innerHTML = "&#9998;";
+    editcom.classList.add("edit");
 
     commentTitle.innerText =
       cm.comment === "" ? "Comment " + Number(index + 1) : cm.comment;
@@ -73,6 +87,8 @@ const displaynewsComment = (comments) => {
     article.appendChild(commentTitle);
     article.appendChild(commentText);
     aside.appendChild(article);
+    aside.appendChild(deleteCom);
+    aside.appendChild(editcom);
     comms.appendChild(aside);
     commentList.appendChild(comms);
   });
@@ -110,6 +126,22 @@ function removeAllChildNodes(parent) {
     parent.removeChild(parent.firstChild);
   }
 }
+
+//Delete Comment
+const deleteComment = async (id) => {
+  var newsid = getId();
+  try {
+    const response = await fetch(`${base_url}/news/${newsid}/comments/${id}`, {
+      method: "DELETE",
+    });
+    const jsonR = await response.json();
+    console.log(jsonR);
+    getNewsComment(newsid);
+  } catch (error) {
+    console.log(error);
+    alert(error);
+  }
+};
 
 function load() {
   var id = getId();

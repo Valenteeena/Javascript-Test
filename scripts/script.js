@@ -125,9 +125,8 @@ const displayNews = (data) => {
     author.innerHTML = dt.author + " <br> " + dt.url;
 
     //setLink
-    // link.href = dt.url;
     link.href = `./pages/newsDetails.html?id=${dt.id}`;
-
+    link.target = "_blank";
     //set button
     buttonLink.innerText = "Read More";
 

@@ -143,7 +143,9 @@ header h1 {
 .comment-list aside img {
   margin: 0 0.5rem 0.5rem 0.5rem;
 }
-
+.comment-list article {
+  flex: 1;
+}
 .comment-list aside article {
   margin: 0 0.5rem 0.5rem 0.5rem;
 }
@@ -182,5 +184,26 @@ form {
   border-radius: 5px;
   width: 80%;
   font-size: 1rem;
+  cursor: pointer;
+}
+.delete {
+  color: red;
+  background-color: unset;
+  border: none;
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+.delete:hover {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.edit {
+  color: #1b4948;
+  background-color: unset;
+  border: none;
+  font-weight: 700;
+}
+.edit:hover {
+  font-size: 1.5rem;
   cursor: pointer;
 }
