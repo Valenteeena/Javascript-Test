@@ -1,9 +1,13 @@
 const base_url = "https://61924d4daeab5c0017105f1a.mockapi.io/credo/v1";
 var url_string = window.location.href;
 var url = new URL(url_string);
-var newsdata, comments;
+var newsdata, comments, commentId;
+var editf = false;
 var form = document.getElementById("form");
-
+var formTitle = document.getElementById("formTitle");
+var namef = document.getElementById("name");
+var commentVal = document.getElementById("commentVal");
+var sendComment = document.getElementById("sendComment");
 //retrieve news id from URL
 const getId = () => {
   var c = url.searchParams.get("id");
@@ -15,7 +19,6 @@ const getSingleNews = async (id) => {
   try {
     const response = await fetch(`${base_url}/news/${id}`);
     newsdata = await response.json();
-    console.log(newsdata);
     displayNewsDets(newsdata);
   } catch (error) {
     console.log(error);
@@ -25,10 +28,17 @@ const getSingleNews = async (id) => {
 
 //Fetch news comment
 const getNewsComment = async (id) => {
+  editf = false;
+  if (!editf) {
+    formTitle.innerHTML = "Add Comment";
+    namef.value = "";
+    commentVal.value = "";
+    sendComment.innerHTML = "Comment";
+    commentId = "";
+  }
   try {
     const response = await fetch(`${base_url}/news/${id}/comments`);
     comments = await response.json();
-    console.log(comments);
     displaynewsComment(comments);
   } catch (error) {
     console.log(error);
@@ -68,7 +78,7 @@ const displaynewsComment = (comments) => {
     deleteCom.classList.add("delete");
 
     editcom.onclick = function () {
-      //   deleteComment(cm.id);
+      setEditComment(cm);
     };
     editcom.innerHTML = "&#9998;";
     editcom.classList.add("edit");
@@ -99,11 +109,10 @@ const submitComment = async () => {
   var id = getId();
   const x = {
     newsId: id,
-    name: document.getElementById("name").value.trim(),
+    name: namef.value.trim(),
     avatar: "",
-    comment: document.getElementById("commentVal").value.trim(),
+    comment: commentVal.value.trim(),
   };
-  //   console.log(x);
   try {
     const response = await fetch(`${base_url}/news/${id}/comments`, {
       method: "POST",
@@ -113,8 +122,39 @@ const submitComment = async () => {
       },
     });
     const jsonR = await response.json();
-    console.log(jsonR);
+    alert("Comment submitted successfully");
+
     getNewsComment(id);
+  } catch (error) {
+    console.log(error);
+    alert(error);
+  }
+};
+
+// Submmit Edit
+const submitEditComment = async () => {
+  var newsid = getId();
+  const x = {
+    newsId: newsid,
+    name: namef.value.trim(),
+    avatar: "",
+    comment: commentVal.value.trim(),
+  };
+  try {
+    const response = await fetch(
+      `${base_url}/news/${newsid}/comments/${commentId}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(x),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const jsonR = await response.json();
+    alert("Edit submitted successfully");
+    editf = false;
+    getNewsComment(newsid);
   } catch (error) {
     console.log(error);
     alert(error);
@@ -135,7 +175,6 @@ const deleteComment = async (id) => {
       method: "DELETE",
     });
     const jsonR = await response.json();
-    console.log(jsonR);
     getNewsComment(newsid);
   } catch (error) {
     console.log(error);
@@ -143,8 +182,21 @@ const deleteComment = async (id) => {
   }
 };
 
+const setEditComment = (cm) => {
+  editf = true;
+  if (editf) {
+    formTitle.innerHTML = "Edit Comment";
+    namef.value = cm.name;
+    commentVal.value = cm.comment;
+    sendComment.innerHTML = "Edit";
+    commentId = cm.id;
+  }
+};
+
 function load() {
   var id = getId();
+  editf = false;
+  // formTitle.innerHTML = "Add Comment";
   getSingleNews(id);
   getNewsComment(id);
 }
@@ -152,5 +204,9 @@ window.onload = load;
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  submitComment();
+  if (editf) {
+    submitEditComment();
+  } else {
+    submitComment();
+  }
 });
