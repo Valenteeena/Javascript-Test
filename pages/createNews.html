@@ -15,28 +15,30 @@
         <header>
             <h1 id="newsTitle">Create News</h1>
         </header>
-        <form name="form" class="createForm" id="form" method="post" action="#!">
+        <form name="createForm" class="createForm" id="createForm" method="post" action="#!">
             <h3>Fill in details appopriately</h3>
             <fieldset>
                 <legend>Author</legend>
-                <input type="text" id="name" placeholder="Enter Your name" required /><br>
+                <input type="text" id="author" placeholder="Enter Your name" required /><br>
             </fieldset>
             <fieldset>
                 <legend>News Title</legend>
-                <input type="text" id="commentVal" placeholder="Enter News Title" required /><br>
+                <input type="text" id="title" placeholder="Enter News Title" required /><br>
             </fieldset>
             <fieldset>
                 <legend>News Url</legend>
-                <input type="text" id="commentVal" placeholder="Enter News Url" required /><br>
+                <input type="text" id="newsurl" placeholder="Enter News Url" required /><br>
             </fieldset>
             <fieldset>
                 <legend>Avatar</legend>
-                <input type="text" id="name" placeholder="Enter image URL" required /><br>
+                <input type="text" id="imageurl" placeholder="Enter image URL" required /><br>
             </fieldset>
-            <button type="submit" id="sendComment">Create News</button>
+            <button type="submit" id="sendNews">Create News</button>
         </form>
         </form>
     </main>
+    <script src="../scripts/createNews.js"></script>
+
 </body>
 
 </html>
