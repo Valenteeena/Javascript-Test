@@ -25,6 +25,20 @@ body {
   margin-bottom: 0.5rem;
   height: 20rem;
 }
+.container header {
+  display: flex;
+  align-items: center;
+}
+header button {
+  margin: 0.5rem 0;
+  color: #f4faf9;
+  padding: 0.5rem 1rem;
+  border: none;
+  width: 8rem;
+  border-radius: 5px;
+  background-color: #1b4948;
+  cursor: pointer;
+}
 header h1 {
   color: #1b4948;
   font-size: 2.3rem;
@@ -163,6 +177,38 @@ header h1 {
   /* border: 1px solid #1b4948; */
   width: 40%;
 }
+.createForm {
+  width: 60%;
+  margin: auto;
+}
+
+.createForm h3 {
+  text-align: center;
+  color: #1b4948;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.createForm fieldset {
+  border: 1px solid #1b4948;
+  margin-bottom: 1rem;
+}
+.createForm legend {
+  font-size: 1.1rem;
+  color: #1b4948;
+  margin-left: 1rem;
+  font-weight: 600;
+}
+.createForm input {
+  margin-bottom: 0;
+  border: none;
+  padding: 0.7rem;
+  width: 100%;
+  background-color: #f4faf9;
+  font-size: 0.9rem;
+}
+.createForm input:focus {
+  outline: none;
+}
 .comment-form input {
   width: 80%;
   margin-bottom: 1rem;
@@ -172,11 +218,11 @@ header h1 {
   font-size: 0.9rem;
 }
 form {
-  /* text-align: center; */
   margin-left: 1rem;
   font-size: 0.9rem;
 }
-.comment-form button {
+.comment-form button,
+.createForm button {
   background-color: #1b4948;
   color: #f4faf9;
   padding: 0.5rem 1rem;
@@ -185,6 +231,10 @@ form {
   width: 80%;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.createForm button {
+  width: 100%;
 }
 .delete {
   color: red;
